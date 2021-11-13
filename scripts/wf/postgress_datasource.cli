@@ -1,0 +1,13 @@
+connect
+
+module add --name=org.postgresql --resources=/opt/jboss/wildfly/modules/system/layers/base/org/postgresql/main/postgresql-42.3.1.jar --dependencies=javax.api,javax.transaction.api
+
+/subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql,driver-module-name=org.postgresql,driver-class-name=org.postgresql.Driver)
+
+data-source add \
+ --name=RDPSQLDS \
+ --jndi-name=java:jboss/datasources/RDPSQLDS \
+ --driver-name=postgresql \
+ --connection-url=jdbc:postgresql://###DB_HOST###:###DB_PORT###/###DB_SCHEMA### \
+ --user-name=###DB_USER### \
+ --password=###DB_PASSWORD###

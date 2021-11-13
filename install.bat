@@ -1,0 +1,1 @@
+copy target\RD-1.0-SNAPSHOT.war C:\FILES\SOFTWARE\wildfly-24.0.1.Final\standalone\deployments
