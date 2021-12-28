@@ -4,20 +4,22 @@ services:
     environment:
       - POSTGRES_PASSWORD=password
     networks:
-      - rd_network
+      - rdnetwork
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - rdpgdata:/var/lib/postgresql/data
     hostname: "postgres"
   wildfly_rdapp:
     build: .
     environment:
       - POSTGRES_PASSWORD=password
     networks:
-      - rd_network
+      - rdnetwork
     ports:
       - "8080:8080"
       - "9990:9990"
-volumes:
-  pgdata:
+    depends_on:
+      - postgres_rdapp
 networks:
-  rd_network:
+  rdnetwork:
+volumes:
+  rdpgdata:

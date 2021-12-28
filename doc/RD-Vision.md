@@ -7,7 +7,6 @@
 		- Dynamic Views: define subsystems / subdomains
 		- Supports Replication
 		- Subscriptions
-
 	Non-Functional:
 		- Performant
 		- Microservices Architecture

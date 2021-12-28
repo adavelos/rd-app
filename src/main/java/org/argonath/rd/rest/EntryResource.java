@@ -2,10 +2,12 @@ package org.argonath.rd.rest;
 
 import org.argonath.rd.data.EntryDao;
 import org.argonath.rd.model.Entry;
+import org.argonath.rd.rest.dto.EntryJso;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import java.util.List;
 
 @Stateless
 @Path("/entry")
@@ -24,22 +26,29 @@ public class EntryResource {
     @GET
     @Path("/{entity}")
     @Produces({"application/json"})
-    public String listEntries(@PathParam("entity") String entity) {
-        throw new UnsupportedOperationException("not supported");
+    public List<Entry> listEntries(@PathParam("entity") String entity) {
+        return entryDao.list(entity);
     }
 
     @POST
-    @Path("/{entity}/{key}")
+    @Path("/")
     @Consumes({"application/json"})
-    public void createEntry(@PathParam("entity") String entity, @PathParam("key") String key, String data) {
-        Entry entry = new Entry(key, entity, "DESC", "ATTR");
+    public void createEntry(EntryJso entryJso) {
+        Entry entry = entryJso.entry();
         entryDao.createEntry(entry);
     }
 
     @PUT
     @Path("/{entity}/{key}")
     @Consumes({"application/json"})
-    public void updateEntry(@PathParam("entity") String entity, @PathParam("key") String key, String data) {
-        throw new UnsupportedOperationException("not supported");
+    public void updateEntry(@PathParam("entity") String entity, @PathParam("key") String key, EntryJso entryJso) {
+        Entry entry = entryJso.entry();
+        entryDao.updateEntry(entity, key, entry);
+    }
+
+    @DELETE
+    @Path("/{entity}/{key}")
+    public void deleteEntry(@PathParam("entity") String entity, @PathParam("key") String key) {
+        entryDao.deleteEntry(entity, key);
     }
 }

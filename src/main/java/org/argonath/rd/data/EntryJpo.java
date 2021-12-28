@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Table(name = "ENTRY")
 @Entity(name = "Entry")
@@ -27,6 +29,11 @@ public class EntryJpo {
     public EntryJpo(Entry entry) {
         this.key = entry.getKey();
         this.entity = entry.getEntity();
+        this.description = entry.getDescription();
+        this.attributes = entry.getAttributes();
+    }
+
+    public void update(Entry entry) {
         this.description = entry.getDescription();
         this.attributes = entry.getAttributes();
     }
@@ -54,4 +61,11 @@ public class EntryJpo {
     public Entry model() {
         return new Entry(key, entity, description, attributes);
     }
+
+    public static List<Entry> model(List<EntryJpo> entryJpoList) {
+        return entryJpoList.stream()
+                .map(e -> e.model())
+                .collect(Collectors.toList());
+    }
+
 }

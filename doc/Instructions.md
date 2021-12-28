@@ -30,7 +30,7 @@
         - enter into wildfly container console :
                 docker exec -it wildfly_rdapp /bin/bash 
         - run JBOSS CLI from container not bound to localhost:
-                /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=~/test --controller=ac21c2d8e212:9990
+                /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=~/test --controller=ba630b485b83:9990
 
 ### Create Network (before running any container)
         docker network create rdapp_network

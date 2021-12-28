@@ -1,42 +1,40 @@
-## Target:
+## Prepare for Christmas Period
 
-  - Implement: RD Entry Consultation
-    - REST API (JAX-RA)
-    - Service Layer (CDI)
-    - Data Layer (JPA)
-    - Unit Tests (simple / not in-memory DB nor Weld)
-  - Specs:
-    - Simple Key
-  - Infra:
-    - Maven Parents (simple abstraction)
-    - Wildfly
-    - Postgresql
-    - Docker Compose
-  - Test: 
-    - Postman
-    - Test FWk
-  
+(1) Maven Refactor: Create Model in separate maven module
+(2) Create RD application with Spring-Boot
+(3) Create RD application with Micronaut
+(4) Create RD application with Quarkus
+(5) Dockerize
+(6) Kubernetes on Docker Desktop
+
+## Christmas
+
+RD Application:
+  - Support composite keys and versioning
+  - Implement complete RD API
+  - Docker [app+PGSQL]
+  - Custom Test Framework [Unit Test / REST integration]
+
+RD Enhancement:
+  - Volume + Performance
+    - Performance Test, Cluster, Caching
+  - Replication
+    - Cassandra, Kafka
+  - Filters and Views
+    - experiment with JSON query support in DB
+    - denormalize with Kafka and ES/CQRS
+
+Features Test:
+  - Test: Spock, Citrus, extend custom with ideas from other ones
+  - Cluster: K8s, swarm
+  - DB: Cassandra, Neo4J, Mongo
+  - Caching: Redis, Hazelcast
+
+UI:
+  - VueJS
+  - Angular
+  - React
 
 
-## TODO:
 
-  1) Implement Missing REST API and Resources
-    - Missing:
-      - Implement UPDATE and LIST operations
-  2) Refactor Maven
-      - separate module: domain model
-      - parent modules (simplified)
-      - BOM
-  3) Dockerize:
-      - Remove published postgresql port
-      - Docker Compose
-  4) Unit tests:
-      - Simple
-      - In memory DB + Weld
-      - Spock
-  5) Implement Spring version
-      - New Module
-      - Common: domain model
-
-      
 
